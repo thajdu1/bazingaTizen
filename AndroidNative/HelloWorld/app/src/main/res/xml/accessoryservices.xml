@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <application name="helloworld">
+        <serviceProfile id="/org/example/myapp/my_message" name="MyMessage"
+            role="consumer"  version="1.0">
+            <supportedTransports>
+                <transport type="TRANSPORT_BT"/>
+                <transport type="TRANSPORT_WIFI"/>
+            </supportedTransports>
+            <serviceChannel id="110" dataRate="low" priority="low"
+                reliability="enable">
+            </serviceChannel>
+        </serviceProfile>
+    </application>
+</resources>

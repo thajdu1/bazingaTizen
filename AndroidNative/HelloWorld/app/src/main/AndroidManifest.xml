@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zrust.helloworld">
 
+    <uses-permission android:name="com.samsung.WATCH_APP_TYPE.Companion"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,6 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="gear_app_packagename"
+            android:value="fm0AHwhcym"/>
+        <meta-data
+            android:name="gear_app_min_version"
+            android:value="2.3.2"/>
+        <meta-data
+            android:name="GearAppType"
+            android:value="wgt"/>
     </application>
 
 </manifest>

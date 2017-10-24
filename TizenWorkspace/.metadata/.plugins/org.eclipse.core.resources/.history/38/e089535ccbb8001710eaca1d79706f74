@@ -5,7 +5,7 @@
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <icon src="icon.png"/>
     <tizen:metadata key="AccessoryServicesLocation" value="/res/xml/accessoryservices.xml"/>
-    <tizen:metadata key="master_app_name" value="Bazinga POC"/>
+    <tizen:metadata key="master_app_name" value="fm0AHwhcym"/>
     <tizen:metadata key="master_app_packagename" value="com.example.zrust.helloworld"/>
     <tizen:metadata key="master_app_min_version" value="1"/>
     <tizen:metadata key="master_app_samsungapps_deeplink" value="Samsungapps deeplink URL"/>
@@ -13,7 +13,6 @@
     <tizen:metadata key="master_app_3rd_url_deeplink" value="3rd url deeplink URL"/>
     <tizen:metadata key="master_app_auto_uninstallation" value="yes"/>
     <name>BazingaWebWatchPOC</name>
-    <tizen:privilege name="http://developer.samsung.com/tizen/privilege/accessoryprotocol"/>
     <tizen:profile name="wearable"/>
     <tizen:setting background-support="disable" encryption="disable" hwkey-event="enable"/>
 </widget>
