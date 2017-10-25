@@ -20,11 +20,11 @@
 </Reference>
 <Reference URI="js%2Fmain.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>m9twHTb0BFS0LZtSKuJx/Lk0Q4mv5HHvMI/ZFVLc7EI=</DigestValue>
+<DigestValue>/tgE0v+9E4sjKndCtlP+K30dBb5hg2yOwU4bXeNv4/Y=</DigestValue>
 </Reference>
 <Reference URI="res%2Fxml%2Faccessoryservices.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>fZhQCNgC2YsmNLHi7IAnG2V+b4QCnJseViT9iG88ilM=</DigestValue>
+<DigestValue>gjkLsv603lrRLMRkOn30Xt9Iqs1EexNpQBJpCrGdXoY=</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -35,11 +35,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-FWsfY8QQbnlwBCzPLW7NilKXceB1gVhdCGeluds9cdnLjxjDISf0NaXP00jCO2sgPvcn8IEO2Cau
-/Drv54Qg+ZNxBhzA+8a4qEa6yrhQ47E9eDiYorci4S6fZl0ia9B0dmf/z0xgwXDmzpxDcjSwUo+0
-xieGDt662tCJLMGCIpA9bH7sgk3ZjH4kC1eI/5kRtwm4p6yGuagExx5SGvpwA4VGOZOQpTCpsfWB
-omOadBBYoM3tGMcTKG2SaaqR+THbcudumK/FqahaWyhMZmtuU4pVNRfLUYeJrtzDfgnLtfr//ITV
-rLogBt9O0Qhkn77isxAxWEI3U57j0EVejyPnYA==
+piIx9N76yvXyzUnVE/zoQttJ2Y1h7xISy4K6f/qu41XVU1SSFjCM72n8mCde7qsynPsi5+K4CqKf
+EdUgY5ft2yZZtZccdJxL74VeE0Qen45ZFM03wxEIcRqoszwdwL35RkDxLllnzBb+Oy8+9M99WSFp
+PUhN7Z7EXeh2hcd/qyqwa2aCUYwoqhbkacUFHB4iLRQBoRfDreHtRkTOGXs6FFPSbyfrRthOXXkW
+rW2NhGItV1b0xkDfUI3nCPZGpTlT/aYKcJFHy+FgyXpJn7k5ul7iAXsYeKOPNpaWx1EV8s23yxfq
+kd3PnZjPTNDK1J3QK1h20J7+ltKaGppl6bBSIg==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

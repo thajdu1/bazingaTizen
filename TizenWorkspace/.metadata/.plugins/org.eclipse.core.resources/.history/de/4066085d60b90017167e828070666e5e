@@ -17,13 +17,6 @@ window.onload = function () {
     	var box = document.querySelector('#textbox');
     	box.innerHTML = (box.innerHTML === "Bazinga") ? "Watch" : "Bazinga";
     });
-};
-
-    var ProviderAppName = "bazingaProvider"
-    var CHANNEL_ID = 110;
-    var SASocket = null;
-    var SASagent = null;
-    
     
     function onsuccess(agents)
     {
@@ -191,11 +184,11 @@ window.onload = function () {
     function onreceive(channelId, data)
     {
     	//createHTML(data);
-    	alert("hello " + data)
+    	alert("hello" + data)
     }
     
 	SASocket.setDataReceiveListener(onreceive);
     
 
     
-
+};

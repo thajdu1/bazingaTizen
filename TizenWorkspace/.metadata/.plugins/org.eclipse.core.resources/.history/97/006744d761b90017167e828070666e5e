@@ -1,4 +1,3 @@
-window.onload = function () {
     // TODO:: Do your initialization job
 	
     // add eventListener for tizenhwkey
@@ -17,8 +16,7 @@ window.onload = function () {
     	var box = document.querySelector('#textbox');
     	box.innerHTML = (box.innerHTML === "Bazinga") ? "Watch" : "Bazinga";
     });
-};
-
+    
     var ProviderAppName = "bazingaProvider"
     var CHANNEL_ID = 110;
     var SASocket = null;
@@ -195,7 +193,4 @@ window.onload = function () {
     }
     
 	SASocket.setDataReceiveListener(onreceive);
-    
-
-    
 

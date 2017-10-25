@@ -17,8 +17,7 @@ window.onload = function () {
     	var box = document.querySelector('#textbox');
     	box.innerHTML = (box.innerHTML === "Bazinga") ? "Watch" : "Bazinga";
     });
-};
-
+    
     var ProviderAppName = "bazingaProvider"
     var CHANNEL_ID = 110;
     var SASocket = null;
@@ -198,4 +197,4 @@ window.onload = function () {
     
 
     
-
+};
