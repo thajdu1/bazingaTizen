@@ -5,7 +5,7 @@
         id="/system/bazingaaccessory"
         name="bazingaaccessory"
         role="provider"
-        serviceImpl="com.example.myapplication.ProviderService"
+        serviceImpl="com.samsung.android.example.zrust.helloworld.service.ProviderService"
         version="1.0"
         serviceLimit="ANY"
         serviceTimeout="10">
