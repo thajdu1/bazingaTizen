@@ -2,7 +2,7 @@
 <resources>
 <application name="BazingaPOCProvider">
     <serviceProfile
-        id="system/bazingaaccessory"
+        id="/system/bazingaaccessory"
         name="bazingaaccessory"
         role="provider"
         serviceImpl="com.example.myapplication.ProviderService"
