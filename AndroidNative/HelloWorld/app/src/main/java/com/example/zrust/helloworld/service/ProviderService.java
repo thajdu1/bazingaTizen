@@ -49,6 +49,8 @@ public class ProviderService extends SAAgent {
         {
             System.out.println("no service on connected device");
 	    /* No matching service on connected accessory */
+        } else {
+            System.out.print("TADAAAAAAM ERROR");
         }
     }
 
@@ -132,6 +134,7 @@ public class ProviderService extends SAAgent {
             System.out.println("*** ON RECEIVE START");
             System.out.println(message);
             System.out.println("*** ON RECEIVE END");
+
 
         }
 
