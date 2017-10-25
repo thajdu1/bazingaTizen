@@ -192,6 +192,11 @@ window.onload = function () {
     {
     	//createHTML(data);
     	alert("hello " + data)
+        var textbox = document.querySelector('.contents');
+        textbox.addEventListener("click", function(){
+        	var box = document.querySelector('#textbox');
+        	box.innerHTML = (box.innerHTML === "Bazinga") ? "Watch" : "Bazinga";
+        });
     }
     
 	SASocket.setDataReceiveListener(onreceive);
