@@ -16,10 +16,11 @@ window.onload = function () {
     textbox.addEventListener("click", function(){
     	var box = document.querySelector('#textbox');
     	box.innerHTML = (box.innerHTML === "Bazinga") ? "Watch" : "Bazinga";
+    	sendMessage("abc");
     });
 };
 
-    var ProviderAppName = "bazingaProvider"
+    var ProviderAppName = "BazingaPOCProvider"
     var CHANNEL_ID = 110;
     var SASocket = null;
     var SASagent = null;
@@ -32,6 +33,7 @@ window.onload = function () {
     		if (agents.length > 0)
     		{
     			SAAgent = agents[0];
+    			alert("onsuccess agentslength > 1");
     		}
     		else
     		{
@@ -41,6 +43,7 @@ window.onload = function () {
     	catch(err)
     	{
     		console.log("exception [" + err.name + "] msg[" + err.message + "]");
+    		alert("onsuccesscatch");
     	}
     }
 
@@ -57,11 +60,13 @@ window.onload = function () {
     		webapis.sa.requestSAAgent(onsuccess, function (err)
     		{
     			console.log("err [" + err.name + "] msg[" + err.message + "]");
+    			alert("connect error SAsocket");
     		});
     	}
     	catch(err)
     	{
     		console.log("exception [" + err.name + "] msg[" + err.message + "]");
+    		alert("connect catch");
     	}
     }
     
@@ -73,6 +78,7 @@ window.onload = function () {
     		{
     			if (peerAgent.appName == ProviderAppName)
     			{
+    				alert("peerAgentFindCallback1");
     			}
     			else
     			{
@@ -82,6 +88,7 @@ window.onload = function () {
     		catch(err)
     		{
     			console.log("exception [" + err.name + "] msg[" + err.message + "]");
+    			alert("peerAgentFindCallback error");
     		}
     	}, onerror : onerror
     }
@@ -96,6 +103,7 @@ window.onload = function () {
 
     		SAAgent.setPeerAgentFindListener(peerAgentFindCallback);
     		SAAgent.findPeerAgents();
+    		alert("onsuccess");
     		}
     		else
     		{
@@ -105,6 +113,7 @@ window.onload = function () {
     	catch(err)
     	{
     		console.log("exception [" + err.name + "] msg[" + err.message + "]");
+    		alert("onsuccess error1");
     	}
     }
     
@@ -118,6 +127,7 @@ window.onload = function () {
     			{
     				SAAgent.setServiceConnectionListener(agentCallback);
     				SAAgent.requestServiceConnection(peerAgent);
+    				alert("peerAgentFindCallback0")
     			}
     			else
     			{
@@ -127,6 +137,7 @@ window.onload = function () {
     		catch(err)
     		{
     			console.log("exception [" + err.name + "] msg[" + err.message + "]");
+    			alert("peerAgentFindCallback error")
     		}
     	}, onerror : onerror
     }
@@ -137,6 +148,16 @@ window.onload = function () {
     	{
     		SASocket = socket;
     		createHTML("startConnection");
+    		
+        	//createHTML(data);
+        	alert("pripojen!")
+            var textbox = document.querySelector('.contents');
+            textbox.addEventListener("click", function(){
+            	var box = document.querySelector('#textbox');
+            	box.innerHTML = "pripojen"
+            });
+    		
+    		
     		SASocket.setSocketStatusListener(function(reason)
     		{
     			console.log("Service connection lost, Reason : [" + reason + "]");
@@ -177,26 +198,31 @@ window.onload = function () {
     		{
     			console.log("sap initialize");
     			connect();
+    			alert("sendMessage0");
 
     			return false;
     		}
-    		SASocket.sendData(CHANNELID, data);
+    		alert("sendMessage1");
+    		SASocket.sendData(CHANNEL_ID, data);
     	}
     	catch(err)
     	{
     		console.log("exception [" + err.name + "] msg[" + err.message + "]");
+    		//alert("sendMessage error");
+    		alert(err.name)
+    		alert(err.message)
     	}
     }
     
     function onreceive(channelId, data)
     {
     	//createHTML(data);
-    	alert("hello " + data)
-        var textbox = document.querySelector('.contents');
-        textbox.addEventListener("click", function(){
-        	var box = document.querySelector('#textbox');
-        	box.innerHTML = (box.innerHTML === "Bazinga") ? "Watch" : "Bazinga";
-        });
+    	alert("ahoj ")
+//        var textbox = document.querySelector('.contents');
+//        textbox.addEventListener("click", function(){
+//        	var box = document.querySelector('#textbox');
+//        	box.innerHTML = (box.innerHTML === "Bazinga") ? "Watch" : "Bazinga";
+//        });
     }
     
 	SASocket.setDataReceiveListener(onreceive);
