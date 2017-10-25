@@ -3,10 +3,13 @@ package com.example.zrust.helloworld.service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.samsung.android.sdk.accessory.SAAgent;
 import com.samsung.android.sdk.accessory.SAPeerAgent;
 import com.samsung.android.sdk.accessory.SASocket;
+
+import java.io.IOException;
 
 /**
  * Created by zrust on 25/10/2017.
@@ -64,41 +67,38 @@ public class ProviderService extends SAAgent {
         }
     }
 
-//    public class ProviderServiceConnection extends SASocket
-//    {
-//        @Override
-//        public void onReceive(int channelId, byte[ ] data)
-//        {
-//            if (mConnectionHandler == null)
-//            {
-//                return;
-//            }
-//            final String message = new String(data);
-//            if (mProviderServiceListener != null && !mProviderServiceListener.isActivityHidden())
-//            {
-//                mProviderServiceListener.onReceiveMessage(message);
-//            }
-//            else
-//            {
-//                mHandler.post(new Runnable()
-//                {
-//                    @Override
-//                    public void run()
-//                    {
-//                        Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT).show();
-//                        try
-//                        {
-//                            mConnectionHandler.send(CHANNEL_ID, "Android app is sleeping".getBytes());
-//                        }
-//                        catch (IOException e)
-//                        {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//                });
-//            }
-//        }
-//    }
+    public class ProviderServiceConnection extends SASocket
+    {
+        public ProviderServiceConnection() {
+            super(ProviderServiceConnection.class.getName());
+        }
+
+        @Override
+        public void onReceive(int channelId, byte[ ] data)
+        {
+            if (mConnectionHandler == null)
+            {
+                return;
+            }
+            final String message = new String(data);
+            System.out.println("*** ON RECEIVE START");
+            System.out.println(message);
+            System.out.println("*** ON RECEIVE END");
+
+        }
+
+        @Override
+        public void onError(int channelId, String errorString, int error) {
+            System.out.println(errorString);
+        }
+
+        @Override
+        public void onServiceConnectionLost(int channelId){
+            System.out.println("*** ON SERVICE CONNECTION LOST START");
+            System.out.println(channelId);
+            System.out.println("*** ON SERVICE CONNECTION LOST END");
+        }
+    }
 
 
 }
