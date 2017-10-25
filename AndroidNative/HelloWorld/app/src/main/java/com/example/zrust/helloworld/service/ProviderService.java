@@ -10,6 +10,7 @@ import com.samsung.android.sdk.accessory.SAPeerAgent;
 import com.samsung.android.sdk.accessory.SASocket;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * Created by zrust on 25/10/2017.
@@ -18,6 +19,14 @@ import java.io.IOException;
 public class ProviderService extends SAAgent {
     private ProviderServiceConnection mConnectionHandler = null;
 
+    public static final String TAG = "ProviderService";
+
+    public static final int SERVICE_CONNECTION_RESULT_OK = 0;
+
+    public static final int HELLOACCESSORY_CHANNEL_ID = 110;
+
+
+    HashMap<Integer, ProviderServiceConnection> mConnectionsMap = null;
 
     public ProviderService() {
         super(ProviderService.class.getName());
@@ -28,18 +37,18 @@ public class ProviderService extends SAAgent {
     {
         if (result == PEER_AGENT_FOUND)
         {
-	/* Peer Agent is found */
+	        /* Peer Agent is found */
             System.out.println("peer agent found");
         }
         else if (result == FINDPEER_DEVICE_NOT_CONNECTED)
         {
             System.out.println("peer agent not found, no device connected");
-	/* Peer Agents are not found, no accessory device connected */
+	        /* Peer Agents are not found, no accessory device connected */
         }
         else if(result == FINDPEER_SERVICE_NOT_FOUND )
         {
             System.out.println("no service on connected device");
-	/* No matching service on connected accessory */
+	    /* No matching service on connected accessory */
         }
     }
 
@@ -53,12 +62,29 @@ public class ProviderService extends SAAgent {
     protected void
     onServiceConnectionResponse(SAPeerAgent peerAgent, SASocket socket, int result)
     {
+
+
+        ProviderServiceConnection myConnection = (ProviderServiceConnection) socket;
+
         if (result == SAAgent.CONNECTION_SUCCESS)
         {
             if (socket != null)
             {
-                //mConnectionHandler = (ProviderServiceConnection) socket;
+
+                if (mConnectionsMap == null) {
+                    mConnectionsMap = new HashMap<Integer, ProviderServiceConnection>();
+                }
+
+                myConnection.mConnectionId = (int) (System.currentTimeMillis() & 255);
+
+                System.out.println("onServiceConnection connectionID = "
+                        + myConnection.mConnectionId);
+
+                mConnectionsMap.put(myConnection.mConnectionId, myConnection);
+
                 System.out.println("Gear connection is successful.");
+
+                myConnection.sendMsgToWatch("Whatever connected");
             }
         }
         else if (result == SAAgent.CONNECTION_ALREADY_EXIST)
@@ -69,8 +95,30 @@ public class ProviderService extends SAAgent {
 
     public class ProviderServiceConnection extends SASocket
     {
+        private int mConnectionId;
         public ProviderServiceConnection() {
             super(ProviderServiceConnection.class.getName());
+        }
+
+        public void sendMsgToWatch(String msg) {
+            System.out.println("In sendMsgToWatch");
+            final String message = msg;
+            final ProviderServiceConnection uHandler = mConnectionsMap
+                    .get(Integer.parseInt(String.valueOf(mConnectionId)));
+            if (uHandler == null) {
+                System.out.println("Error, can not get HelloAccessoryProviderConnection handler");
+                return;
+            }
+            new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        uHandler.send(HELLOACCESSORY_CHANNEL_ID,
+                                message.getBytes());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }).start();
         }
 
         @Override
@@ -99,8 +147,6 @@ public class ProviderService extends SAAgent {
             System.out.println("*** ON SERVICE CONNECTION LOST END");
         }
     }
-
-
 }
 
 
