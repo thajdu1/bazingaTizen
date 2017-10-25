@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<application name="helloworld">
+<application name="BazingaPOCProvider">
     <serviceProfile
-        id="/org/example/myapp/my_message"
-        name="myapplication"
+        id="system/bazingaaccessory"
+        name="bazingaaccessory"
         role="provider"
         serviceImpl="com.example.myapplication.ProviderService"
         version="1.0"
