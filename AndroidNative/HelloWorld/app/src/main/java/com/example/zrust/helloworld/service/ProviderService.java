@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 
-import com.example.zrust.helloworld.MainActivity;
-import com.example.zrust.helloworld.R;
 import com.samsung.android.sdk.accessory.SAAgent;
 import com.samsung.android.sdk.accessory.SAPeerAgent;
 import com.samsung.android.sdk.accessory.SASocket;
@@ -43,7 +41,6 @@ import com.samsung.android.sdk.accessory.SASocket;
 
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.logging.Logger;
 
@@ -116,11 +113,8 @@ public class ProviderService extends SAAgent {
 
         @Override
         public void onReceive(int channelId, byte[] data) {
-            String decodedMessage = Arrays.toString(data);
-            System.out.println("onReceive ======");
-            System.out.println(Arrays.toString(data));
-            System.out.println(Arrays.toString(data).toCharArray());
-
+            Log.d(TAG, "onReceive");
+            //When Watch asks.. call salesforce and return results
         }
 
         @Override
