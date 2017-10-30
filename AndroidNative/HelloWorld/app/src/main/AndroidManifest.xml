@@ -23,10 +23,10 @@
 
         <service
             android:name="com.example.zrust.helloworld.service.ProviderService"
-            android:exported="true"
-            android:process=":remote">
+            android:exported="false">
             <intent-filter>
-                <action android:name="com.example.zrust.helloworld.service.StartService" />
+                <action android:name="com.example.zrust.helloworld.service.action.RECEIVED"/>
+                <action android:name="com.example.zrust.helloworld.service.action.SENT"/>
             </intent-filter>
         </service>
 

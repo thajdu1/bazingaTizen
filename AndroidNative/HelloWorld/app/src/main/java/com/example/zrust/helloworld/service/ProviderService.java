@@ -1,6 +1,9 @@
 package com.example.zrust.helloworld.service;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Binder;
 import android.os.IBinder;
 
@@ -56,6 +59,9 @@ public class ProviderService extends SAAgent {
 
     public static final int HELLOACCESSORY_CHANNEL_ID = 110;
 
+    public static final String ACTION_DATA_RECEIVED = "com.example.zrust.helloworld.service.action.RECEIVED";
+    public static final String ACTION_DATA_SENT = "com.example.zrust.helloworld.MainActivity.SENT";
+
     HashMap<Integer, HelloAccessoryProviderConnection> mConnectionsMap = null;
 
     private final IBinder mBinder = new LocalBinder();
@@ -75,6 +81,19 @@ public class ProviderService extends SAAgent {
 
         public HelloAccessoryProviderConnection() {
             super(HelloAccessoryProviderConnection.class.getName());
+
+            BroadcastReceiver sendToWatchReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    String message = intent.getStringExtra("message");  //get the type of message from MyGcmListenerService 1 - lock or 0 -Unlock
+                    System.out.println("DATA SEND: " + message);
+                    sendMsgToWatch(message);
+
+                }
+            };
+            IntentFilter filter = new IntentFilter(ProviderService.ACTION_DATA_SENT);
+            registerReceiver(sendToWatchReceiver, filter);
+
         }
 
         @Override
@@ -107,8 +126,14 @@ public class ProviderService extends SAAgent {
 
         @Override
         public void onReceive(int channelId, byte[] data) {
-            Log.d(TAG, "onReceive");
-            //When Watch asks.. call salesforce and return results
+
+            System.out.println("onReceive ======");
+            System.out.println(new String(data));
+
+            //Intent i = new Intent(this, com.example.zrust.helloworld.MainActivity.class);
+            Intent i = new Intent(ACTION_DATA_RECEIVED);
+            i.putExtra("message", new String(data));
+            sendBroadcast(i);
         }
 
         @Override
