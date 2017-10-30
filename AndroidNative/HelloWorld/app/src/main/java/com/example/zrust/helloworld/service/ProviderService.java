@@ -73,12 +73,6 @@ public class ProviderService extends SAAgent {
     public class HelloAccessoryProviderConnection extends SASocket {
         private int mConnectionId;
 
-        private String soql = "SELECT Id, Subject, AccountId, ActivityDateTime, WhatId,What.Name,What.type, WhoId, Who.Id,"
-                + "Who.FirstName,Who.LastName, Description, DurationInMinutes, Location,"
-                + " (SELECT EventId, RelationId, Relation.Name,Relation.Email FROM EventRelations) "
-                + "from Event Where ActivityDate = Today Order By ActivityDateTime ASC";
-
-
         public HelloAccessoryProviderConnection() {
             super(HelloAccessoryProviderConnection.class.getName());
         }

@@ -21,7 +21,14 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.example.zrust.helloworld.service.ProviderService" />
+        <service
+            android:name="com.example.zrust.helloworld.service.ProviderService"
+            android:exported="true"
+            android:process=":remote">
+            <intent-filter>
+                <action android:name="com.example.zrust.helloworld.service.StartService" />
+            </intent-filter>
+        </service>
 
         <receiver android:name="com.samsung.android.sdk.accessory.RegisterUponInstallReceiver">
             <intent-filter>
