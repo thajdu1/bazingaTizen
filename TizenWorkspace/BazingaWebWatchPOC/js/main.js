@@ -216,8 +216,7 @@ window.onload = function () {
     
     function onreceive(channelId, data)
     {
-    	//createHTML(data);
-    	 alert("ahoj received");
+    	 alert(data);
 //        var textbox = document.querySelector('.contents');
 //        textbox.addEventListener("click", function(){
 //        	var box = document.querySelector('#textbox');
