@@ -33,17 +33,17 @@ window.onload = function () {
     		if (agents.length > 0)
     		{
     			SAAgent = agents[0];
-    			alert("onsuccess agentslength > 1");
+    			// alert("onsuccess agentslength > 1");
     		}
     		else
     		{
-    			alert("Not found SAAgent!!");
+    			// alert("Not found SAAgent!!");
     		}
     	}
     	catch(err)
     	{
     		console.log("exception [" + err.name + "] msg[" + err.message + "]");
-    		alert("onsuccesscatch");
+    		// alert("onsuccesscatch");
     	}
     }
 
@@ -51,7 +51,7 @@ window.onload = function () {
     	{
     	if (SASocket)
     		{
-    		alert('Already connected!');
+    		// alert('Already connected!');
 
     		return false;
     		}
@@ -60,13 +60,13 @@ window.onload = function () {
     		webapis.sa.requestSAAgent(onsuccess, function (err)
     		{
     			console.log("err [" + err.name + "] msg[" + err.message + "]");
-    			alert("connect error SAsocket");
+    			// alert("connect error SAsocket");
     		});
     	}
     	catch(err)
     	{
     		console.log("exception [" + err.name + "] msg[" + err.message + "]");
-    		alert("connect catch");
+    		// alert("connect catch");
     	}
     }
     
@@ -78,17 +78,17 @@ window.onload = function () {
     		{
     			if (peerAgent.appName == ProviderAppName)
     			{
-    				alert("peerAgentFindCallback1");
+    				// alert("peerAgentFindCallback1");
     			}
     			else
     			{
-    				alert("Not expected app!! : " + peerAgent.appName);
+    				// alert("Not expected app!! : " + peerAgent.appName);
     			}
     		}
     		catch(err)
     		{
     			console.log("exception [" + err.name + "] msg[" + err.message + "]");
-    			alert("peerAgentFindCallback error");
+    			// alert("peerAgentFindCallback error");
     		}
     	}, onerror : onerror
     }
@@ -103,17 +103,17 @@ window.onload = function () {
 
     		SAAgent.setPeerAgentFindListener(peerAgentFindCallback);
     		SAAgent.findPeerAgents();
-    		alert("onsuccess");
+    		// alert("onsuccess");
     		}
     		else
     		{
-    		alert("Not found SAAgent!!");
+    		// alert("Not found SAAgent!!");
     		}
     	}
     	catch(err)
     	{
     		console.log("exception [" + err.name + "] msg[" + err.message + "]");
-    		alert("onsuccess error1");
+    		// alert("onsuccess error1");
     	}
     }
     
@@ -127,17 +127,17 @@ window.onload = function () {
     			{
     				SAAgent.setServiceConnectionListener(agentCallback);
     				SAAgent.requestServiceConnection(peerAgent);
-    				alert("peerAgentFindCallback0")
+    				// alert("peerAgentFindCallback0")
     			}
     			else
     			{
-    				alert("Not expected app!! : " + peerAgent.appName);
+    				// alert("Not expected app!! : " + peerAgent.appName);
     			}
     		}
     		catch(err)
     		{
     			console.log("exception [" + err.name + "] msg[" + err.message + "]");
-    			alert("peerAgentFindCallback error")
+    			// alert("peerAgentFindCallback error")
     		}
     	}, onerror : onerror
     }
@@ -147,17 +147,17 @@ window.onload = function () {
     	onconnect : function(socket)
     	{
     		SASocket = socket;
-    		createHTML("startConnection");
     		
         	//createHTML(data);
-        	alert("pripojen!")
+        	// alert("pripojen!")
             var textbox = document.querySelector('.contents');
             textbox.addEventListener("click", function(){
             	var box = document.querySelector('#textbox');
             	box.innerHTML = "pripojen"
             });
-    		
-    		
+
+    		SASocket.setDataReceiveListener(onreceive);
+
     		SASocket.setSocketStatusListener(function(reason)
     		{
     			console.log("Service connection lost, Reason : [" + reason + "]");
@@ -198,26 +198,26 @@ window.onload = function () {
     		{
     			console.log("sap initialize");
     			connect();
-    			alert("sendMessage0");
+//    			// alert("sendMessage0");
 
     			return false;
     		}
-    		alert("sendMessage1");
+//    		// alert("sendMessage1");
     		SASocket.sendData(CHANNEL_ID, data);
     	}
     	catch(err)
     	{
     		console.log("exception [" + err.name + "] msg[" + err.message + "]");
-    		//alert("sendMessage error");
-    		alert(err.name)
-    		alert(err.message)
+    		//// alert("sendMessage error");
+    		// alert(err.name)
+    		// alert(err.message)
     	}
     }
     
     function onreceive(channelId, data)
     {
     	//createHTML(data);
-    	alert("ahoj ")
+    	 alert("ahoj received");
 //        var textbox = document.querySelector('.contents');
 //        textbox.addEventListener("click", function(){
 //        	var box = document.querySelector('#textbox');
@@ -225,7 +225,6 @@ window.onload = function () {
 //        });
     }
     
-	SASocket.setDataReceiveListener(onreceive);
     
 
     

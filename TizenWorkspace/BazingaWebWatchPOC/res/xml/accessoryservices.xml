@@ -9,7 +9,6 @@
 
 			<supportedTransports>
 				<transport type="TRANSPORT_BT" />
-				<transport type="TRANSPORT_WIFI" />
 			</supportedTransports>
 			<serviceChannel
 				id="110"
