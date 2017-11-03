@@ -3,16 +3,28 @@
 }
 
 body {
-    margin: 0px auto;
-    background-color:#222;
+    background-color: black;
+    align-items: center;
+    -webkit-justify-content: center;
+    padding-top: 90px;
+}
+
+button[type=symptom] {
+	width: 250px;
+	height: 60px;
+	color:#000000;
+	font-size:1.5em;
+	border: 2px solid;
+    border-radius: 20px;
+    margin: 10px;
 }
 
 .contents {
 	display: flex;
-	display: -webkit-flex;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	height:320px;
+	flex-direction: column;
+	background-color: white;
+	align-items: center;
+	
 }
 
 
@@ -20,4 +32,23 @@ body {
 	font-weight:bold;
 	font-size:5em;
 	color:#fff;
+	flex: 1;
+	flex-direction: row;
+}
+
+.buttonNoSymptom {
+	
+	background-color:#2df505;	
+}
+
+.buttonSymptom {
+	background-color:#f00d05;	
+
+}
+
+.buttonsContainer {
+	box-sizing: border-box;
+	display: block;
+	text-align: center;
+	background-color: black;
 }

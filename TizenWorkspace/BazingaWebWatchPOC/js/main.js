@@ -11,25 +11,21 @@ window.onload = function() {
 			}
 		}
 	});
+	
+	// buttons toggle
+	var buttonNoSymptom = document.querySelector('.buttonNoSymptom');
 
-
-
-
-	// Simple text toggle, changes text on click and sends data to phone
-	var textbox = document.querySelector('.contents');
-
-	textbox.addEventListener("click", function() {
-
-		var box = document.querySelector('#textbox');
-
-		box.innerHTML = (box.innerHTML === "Bazinga") ? "Watch" : "Bazinga";
-
-
-		// Calls method to send Message to host app (Provider)
-
-		sendMessage("abc");
-
+	buttonNoSymptom.addEventListener("click", function() {
+		sendMessage("I feel good");
 	});
+	
+	// buttons toggle
+	var buttonSymptom = document.querySelector('.buttonSymptom');
+
+	buttonSymptom.addEventListener("click", function() {
+		sendMessage("I have a symptom");
+	});
+
 
 };
 
